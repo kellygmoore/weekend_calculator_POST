@@ -4,6 +4,11 @@
     height: 40px;
 }
 
+h3 {
+    text-shadow: 1px 1px 5px #5a575a;
+    width: 175px;
+}
+
 .calcButtonsDiv, #calculationsBtn {
     width: 175px;
 }

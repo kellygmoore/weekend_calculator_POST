@@ -2,7 +2,8 @@
  * Created by kellygarskemoore on 10/30/15.
  */
 var doMathObject = {};
-var whichNumTracker = 0;
+var getValue = "";
+//var whichNumTracker = 0;
 
 $(document).ready(function(){
     //when number button pressed, POST that number
@@ -52,28 +53,40 @@ $(document).ready(function(){
     });
 
     $("#equalDiv").on('click', '#pressEqual', function(){
+        postSecondNumber();
         callServer();
     });
 
     //clear contents if clear button clicked
     $(".answerDiv").on('click', '#clearBtn', function(){
         $("#showTotalDiv").empty();
+        getValue = "";
     })
 });
+
+function postNumber(inputNumber) {
+    getValue = getValue + inputNumber.toString();
+    console.log(getValue);
+}
 
 //functions to set up the object to send to server
 function postMathOperator(mathOperatorString){
     doMathObject["type"] = mathOperatorString;
+    doMathObject["myValueX"] = getValue;
+    getValue = "";
 }
 
-function postNumber(inputNumber){
-    whichNumTracker ++;
-    if(whichNumTracker == 1) {
-        doMathObject["myValueX"] = inputNumber;
-    } else if(whichNumTracker == 2){
-        doMathObject["myValueY"] = inputNumber;
-    }
+function postSecondNumber(){
+    doMathObject["myValueY"] = getValue;
 }
+
+
+    //whichNumTracker ++;
+    //if(whichNumTracker == 1) {
+    //    doMathObject["myValueX"] = inputNumber;
+    //} else if(whichNumTracker == 2){
+    //    doMathObject["myValueY"] = inputNumber;
+    //}
 
 function callServer(){
 
