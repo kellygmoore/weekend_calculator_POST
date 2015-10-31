@@ -1,7 +1,7 @@
 /**
  * Created by kellygarskemoore on 10/30/15.
  */
-var myTotal = 0;
+//var myTotal = 0;
 
 $(document).ready(function(){
     //perform the math operation when button clicked
@@ -17,9 +17,10 @@ $(document).ready(function(){
     $(".buttonsDiv").on('click', '#divide', function(){
         postSendInputs("Divide");
     });
+    $(".answerDiv").on('click', '#clearBtn', function(){
+        $("#showTotalDiv").empty();
+    })
 
-    //now call function to post to DOM
-    //appendTotal();
 });
 
 //post to server to do the math calculations
@@ -47,20 +48,7 @@ function postSendInputs(mathOperatorString){
             console.log(data);
             myTotal = data.message;
             $("#showTotalDiv").text(myTotal);
+
         }
     })
 }
-
-//function appendTotal(){
-    //$.ajax({
-    //    type: "GET",
-    //    url: "/data",
-    //    success: function(data){
-    //        console.log(data);
-    //        myTotal = data.message;
-    //    }
-    //});
-
-
-
-//}

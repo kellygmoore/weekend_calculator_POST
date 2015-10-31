@@ -11,12 +11,13 @@
 </head>
 <body>
     <div class="container">
-        <form id="inputForm">
-            <p><label for="myValueX">Enter First Number: </label></p>
-            <input type="text" id="myValueX" name="myValueX">
-            <hr><p><label for="myValueY">Enter Second Number: </label></p>
-            <input type="text" id="myValueY" name="myValueY">
-            <p></p><hr>
+        <form id="inputForm" class="form-horizontal">
+            <div class="form-group form-group-lg well text-center">
+                <label for="myValueX" class="control-label">Enter First Number: </label>
+                <input type="text" id="myValueX" name="myValueX">
+                <label for="myValueY" class="control-label">Enter Second Number: </label>
+                <input type="text" id="myValueY" name="myValueY">
+            </div>
         </form>
         <p></p>
         <div class="buttonsDiv well">
@@ -25,8 +26,12 @@
             <button class="default btn-lg" id="multiply">x</button>
             <button class="default btn-lg" id="divide">/</button>
         </div>
-        <div id="showTotalDiv">
-
+        <div class="answerDiv">
+            <div id="showTotalDiv" class="well">
+            </div>
+            <div id="eraseBtn">
+                <button class="default btn-lg" id="clearBtn">Clear</button>
+            </div>
         </div>
     </div>
 </body>
