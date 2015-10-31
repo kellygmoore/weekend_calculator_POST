@@ -15,15 +15,15 @@ app.use(bodyParser.urlencoded({expanded: true}));
 app.post("/data", function(request, response){
     console.log(request.body.myValueX);
     var didMath = 0;
-    if(request.body.type == "Add"){
-        didMath = parseInt(request.body.myValueX) + parseInt(request.body.myValueY);
-    } else if(request.body.type == "Subtract") {
-        didMath = parseInt(request.body.myValueX) - parseInt(request.body.myValueY);
-    } else if(request.body.type == "Multiply") {
-        didMath = parseInt(request.body.myValueX) * parseInt(request.body.myValueY);
-    } else if(request.body.type == "Divide") {
-        didMath = parseInt(request.body.myValueX) / parseInt(request.body.myValueY);
-    }
+    //if(request.body.type == "Add"){
+    //    didMath = parseInt(request.body.myValueX) + parseInt(request.body.myValueY);
+    //} else if(request.body.type == "Subtract") {
+    //    didMath = parseInt(request.body.myValueX) - parseInt(request.body.myValueY);
+    //} else if(request.body.type == "Multiply") {
+    //    didMath = parseInt(request.body.myValueX) * parseInt(request.body.myValueY);
+    //} else if(request.body.type == "Divide") {
+    //    didMath = parseInt(request.body.myValueX) / parseInt(request.body.myValueY);
+    //}
 
     response.send({message: didMath});
 });

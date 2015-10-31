@@ -1,7 +1,7 @@
 /**
  * Created by kellygarskemoore on 10/30/15.
  */
-//var myTotal = 0;
+
 
 $(document).ready(function(){
     //perform the math operation when button clicked
@@ -17,6 +17,7 @@ $(document).ready(function(){
     $(".buttonsDiv").on('click', '#divide', function(){
         postSendInputs("Divide");
     });
+    //clear contents if clear button clicked
     $(".answerDiv").on('click', '#clearBtn', function(){
         $("#showTotalDiv").empty();
     })
@@ -28,15 +29,15 @@ function postSendInputs(mathOperatorString){
     var doMathObject = {};
     //use the .each to put inputs into an object to send to server
                                     //myValueX myValueY
-    $.each($("#inputForm").serializeArray(), function(i, field){
-       doMathObject[field.name] = field.value;
-    });
+    //$.each($("#inputForm").serializeArray(), function(i, field){
+    //   doMathObject[field.name] = field.value;
+    //});
 
     //then add the button type into the object
     doMathObject["type"] = mathOperatorString;
 
     //erase the input field
-    $("#inputForm").find("input[type=text]").val("");
+   // $("#inputForm").find("input[type=text]").val("");
 
 
     //make the call to the server "hello...is it me you're looking for?" post the object

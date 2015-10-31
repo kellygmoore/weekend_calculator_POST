@@ -1,13 +1,25 @@
+.btn-default {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
 
+.calcButtonsDiv {
+    width: 175px;
+}
 
 #inputForm {
     width: 250px;
 }
 
 .buttonsDiv {
-    width: 250px;
+    width: 125px;
 }
 
 #showTotalDiv {
     width: 250px;
+}
+
+#clearBtn {
+    width: auto;
 }
