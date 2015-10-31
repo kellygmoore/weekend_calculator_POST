@@ -2,6 +2,7 @@
  * Created by kellygarskemoore on 10/30/15.
  */
 var doMathObject = {};
+var whichNumTracker = 0;
 
 $(document).ready(function(){
     //when number button pressed, POST that number
@@ -50,6 +51,10 @@ $(document).ready(function(){
         postMathOperator("Divide");
     });
 
+    $("#equalDiv").on('click', '#pressEqual', function(){
+        callServer();
+    });
+
     //clear contents if clear button clicked
     $(".answerDiv").on('click', '#clearBtn', function(){
         $("#showTotalDiv").empty();
@@ -59,26 +64,16 @@ $(document).ready(function(){
 //functions to set up the object to send to server
 function postMathOperator(mathOperatorString){
     doMathObject["type"] = mathOperatorString;
-    callServer();
 }
 
 function postNumber(inputNumber){
-    doMathObject["myValueX"] = inputNumber;
-    doMathObject["myValueY"] = 5;
+    whichNumTracker ++;
+    if(whichNumTracker == 1) {
+        doMathObject["myValueX"] = inputNumber;
+    } else if(whichNumTracker == 2){
+        doMathObject["myValueY"] = inputNumber;
+    }
 }
-    //use the .each to put inputs into an object to send to server
-                                    //myValueX myValueY
-    //$.each($("#inputForm").serializeArray(), function(i, field){
-    //   doMathObject[field.name] = field.value;
-    //});
-
-    //then add the button type into the object
-
-    //erase the input field
-   // $("#inputForm").find("input[type=text]").val("");
-
-
-    //make the call to the server "hello...is it me you're looking for?" post the object
 
 function callServer(){
 
@@ -90,7 +85,29 @@ function callServer(){
             console.log(data);
             myTotal = data.message;
             $("#showTotalDiv").text(myTotal);
-
+            whichNumTracker = 0;
         }
     });
 }
+
+
+
+
+
+
+
+
+
+//use the .each to put inputs into an object to send to server
+//myValueX myValueY
+//$.each($("#inputForm").serializeArray(), function(i, field){
+//   doMathObject[field.name] = field.value;
+//});
+
+//then add the button type into the object
+
+//erase the input field
+// $("#inputForm").find("input[type=text]").val("");
+
+
+//make the call to the server "hello...is it me you're looking for?" post the object
