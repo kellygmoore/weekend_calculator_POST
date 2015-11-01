@@ -5,27 +5,21 @@
 }
 
 h3 {
-    text-shadow: 1px 1px 5px #5a575a;
+    text-shadow: 2px 1px 5px white;
     width: 175px;
 }
 
-.calcButtonsDiv, #calculationsBtn {
-    width: 175px;
-}
-
-.buttonsDiv, #equalDiv {
-    width: 125px;
-    display: inline;
-}
-
-#showTotalDiv, #eraseBtn {
-    display: inline-block;
+.calcButtonsDiv {
+    width: 215px;
 }
 
 #showTotalDiv {
-    width: 100px;
+    margin: 5px auto 5px auto;
+    width: 175px;
+    height: 45px;
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid slategrey;
+    box-shadow: 1px 1px 3px black;
 }
 
-#equalDiv {
-    padding-left: 45px;
-}

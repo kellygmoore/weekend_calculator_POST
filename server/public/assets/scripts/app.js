@@ -3,10 +3,9 @@
  */
 var doMathObject = {};
 var getValue = "";
-//var whichNumTracker = 0;
 
 $(document).ready(function(){
-    //when number button pressed, POST that number
+    //when number button pressed, call function to store that number in object
     $(".calcButtonsDiv").on('click', '#one', function(){
         postNumber(1);
     });
@@ -37,22 +36,26 @@ $(document).ready(function(){
     $(".calcButtonsDiv").on('click', '#zero', function(){
         postNumber(0);
     });
+    $(".calcButtonsDiv").on('click', '#decimal', function(){
+        postNumber(".");
+    });
 
-    //when the operator button is clicked
-    $(".buttonsDiv").on('click', '#add', function(){
+    //when the operator button is clicked call function to store string of operator
+    $(".calcButtonsDiv").on('click', '#add', function(){
         postMathOperator("Add");
     });
-    $(".buttonsDiv").on('click', '#subtract', function(){
+    $(".calcButtonsDiv").on('click', '#subtract', function(){
         postMathOperator("Subtract");
     });
-    $(".buttonsDiv").on('click', '#multiply', function(){
+    $(".calcButtonsDiv").on('click', '#multiply', function(){
         postMathOperator("Multiply");
     });
-    $(".buttonsDiv").on('click', '#divide', function(){
+    $(".calcButtonsDiv").on('click', '#divide', function(){
         postMathOperator("Divide");
     });
 
-    $("#equalDiv").on('click', '#pressEqual', function(){
+    //when equal button is clicked will store second number value in object and then call server
+    $(".calcButtonsDiv").on('click', '#pressEqual', function(){
         postSecondNumber();
         callServer();
     });
@@ -64,6 +67,7 @@ $(document).ready(function(){
     })
 });
 
+//stores number clicked into variable
 function postNumber(inputNumber) {
     getValue = getValue + inputNumber.toString();
     console.log(getValue);
@@ -73,20 +77,13 @@ function postNumber(inputNumber) {
 function postMathOperator(mathOperatorString){
     doMathObject["type"] = mathOperatorString;
     doMathObject["myValueX"] = getValue;
-    getValue = "";
+    getValue = "";      //reset getValue to be ready to store second input value
 }
 
+//store second value in object
 function postSecondNumber(){
     doMathObject["myValueY"] = getValue;
 }
-
-
-    //whichNumTracker ++;
-    //if(whichNumTracker == 1) {
-    //    doMathObject["myValueX"] = inputNumber;
-    //} else if(whichNumTracker == 2){
-    //    doMathObject["myValueY"] = inputNumber;
-    //}
 
 function callServer(){
 
@@ -97,8 +94,8 @@ function callServer(){
         success: function(data){
             console.log(data);
             myTotal = data.message;
-            $("#showTotalDiv").text(myTotal);
-            whichNumTracker = 0;
+            console.log("Here is answer to go on DOM: ", myTotal);
+            $("#showTotalDiv").text(myTotal);  //post value received back from server after math
         }
     });
 }
