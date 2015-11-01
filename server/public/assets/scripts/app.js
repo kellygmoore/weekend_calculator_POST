@@ -3,6 +3,7 @@
  */
 var doMathObject = {};
 var getValue = "";
+var operatorURL = "";
 
 $(document).ready(function(){
     //when number button pressed, call function to store that number in object
@@ -42,15 +43,19 @@ $(document).ready(function(){
 
     //when the operator button is clicked call function to store string of operator
     $(".calcButtonsDiv").on('click', '#add', function(){
+        operatorURL = "/add";
         postMathOperator("Add");
     });
     $(".calcButtonsDiv").on('click', '#subtract', function(){
+        operatorURL = "/subtract";
         postMathOperator("Subtract");
     });
     $(".calcButtonsDiv").on('click', '#multiply', function(){
+        operatorURL = "/multiply";
         postMathOperator("Multiply");
     });
     $(".calcButtonsDiv").on('click', '#divide', function(){
+        operatorURL = "/divide";
         postMathOperator("Divide");
     });
 
@@ -85,11 +90,11 @@ function postSecondNumber(){
     doMathObject["myValueY"] = getValue;
 }
 
+//make the call to the server to POST the math object and return the calculated value
 function callServer(){
-
     $.ajax({
         type: "POST",
-        url: "/data",
+        url: operatorURL,
         data: doMathObject,
         success: function(data){
             console.log(data);
@@ -108,16 +113,3 @@ function callServer(){
 
 
 
-//use the .each to put inputs into an object to send to server
-//myValueX myValueY
-//$.each($("#inputForm").serializeArray(), function(i, field){
-//   doMathObject[field.name] = field.value;
-//});
-
-//then add the button type into the object
-
-//erase the input field
-// $("#inputForm").find("input[type=text]").val("");
-
-
-//make the call to the server "hello...is it me you're looking for?" post the object
